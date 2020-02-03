@@ -38,3 +38,7 @@ C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\Level
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelTwoMatrix.g.cs
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelOneMatrix.baml
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelTwoMatrix.baml
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\UserInput.g.cs
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\UserInput.baml
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\Newtonsoft.Json.xml

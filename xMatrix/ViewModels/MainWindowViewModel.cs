@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using xMatrix.Models;
 using xMatrix.UserControls;
+using xMatrix.Core.Services;
 
 namespace xMatrix.ViewModels
 {
@@ -69,7 +70,7 @@ namespace xMatrix.ViewModels
             return new ObservableCollection<DemoItem>
             {
 
-               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel() } ,
+               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( new GoalRepo()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
@@ -93,7 +94,7 @@ namespace xMatrix.ViewModels
                         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                     },
 
-               new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel() } ,
+               new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(new GoalRepo(), new IdService()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),

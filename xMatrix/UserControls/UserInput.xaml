@@ -3,10 +3,181 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:xMatrix.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="5"
+            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            HorizontalAlignment="Center">
+            Add New Goals
+        </TextBlock>
+        
+        <TextBox 
+            Grid.Row="3" Grid.Column="1"
+            materialDesign:HintAssist.Hint="Goal name" 
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            VerticalAlignment="Center"
+            Text="{Binding NewGoalName}"/>
+
+        <ComboBox
+            Grid.Row="3" Grid.Column="3"
+            materialDesign:HintAssist.Hint="Goal Type"
+            SelectedItem="{Binding NewGoalType}"
+            ItemsSource="{Binding GoalTypes}">
+        </ComboBox>
+
+        <Button
+            Grid.Row="3" Grid.Column="5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding AddNewGoal}">
+            ADD
+        </Button>
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="5"
+            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            HorizontalAlignment="Center">
+            Modify Goals
+        </TextBlock>
+
+
+        <DataGrid
+            Grid.Row="7"
+            Grid.Column="1"
+            Grid.RowSpan="13"
+            ItemsSource="{Binding Goals}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            SelectedItem="{Binding SelectedGoal}">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid
+            Grid.Row="7"
+            Grid.Column="3"
+            Grid.RowSpan="11"
+            ItemsSource="{Binding AllRelatedGoals}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            SelectedItem="{Binding SelectedAllRelatedGoal}">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button
+            Grid.Row="19" Grid.Column="3"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding AddRelatedGoal}">
+            ADD RELATION
+        </Button>
+
+        <DataGrid
+            Grid.Row="7"
+            Grid.Column="5"
+            Grid.RowSpan="11"
+            ItemsSource="{Binding RelatedGoals}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            SelectedItem="{Binding SelectedRelatedGoal}">
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button
+            Grid.Row="19" Grid.Column="5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding RemoveRelatedGoal}">
+            REMOVE RELATION
+        </Button>
+
+        <Button
+            Grid.Row="21" Grid.Column="1" Grid.ColumnSpan="5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding AddNewGoal}">
+            SAVE
+        </Button>
+
     </Grid>
 </UserControl>
