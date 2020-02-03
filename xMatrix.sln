@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xMatrix", "xMatrix\xMatrix.csproj", "{9FAD62C7-27BF-4E9F-88D0-790F32CF68F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xMatrix.Core", "xMatrix.Core\xMatrix.Core.csproj", "{1199EF5A-88D8-46AF-BAF2-7D7FAC0D69E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xMatrix.Tests", "xMatrix.Tests\xMatrix.Tests.csproj", "{FC2B3C92-1929-4352-88CB-79E3CC32EB4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9FAD62C7-27BF-4E9F-88D0-790F32CF68F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FAD62C7-27BF-4E9F-88D0-790F32CF68F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FAD62C7-27BF-4E9F-88D0-790F32CF68F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1199EF5A-88D8-46AF-BAF2-7D7FAC0D69E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1199EF5A-88D8-46AF-BAF2-7D7FAC0D69E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1199EF5A-88D8-46AF-BAF2-7D7FAC0D69E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1199EF5A-88D8-46AF-BAF2-7D7FAC0D69E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC2B3C92-1929-4352-88CB-79E3CC32EB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2B3C92-1929-4352-88CB-79E3CC32EB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2B3C92-1929-4352-88CB-79E3CC32EB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2B3C92-1929-4352-88CB-79E3CC32EB4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

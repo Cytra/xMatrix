@@ -1,0 +1,4 @@
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Tests\bin\Debug\xMatrix.Tests.dll
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Tests\bin\Debug\xMatrix.Tests.pdb
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Tests\obj\Debug\xMatrix.Tests.dll
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Tests\obj\Debug\xMatrix.Tests.pdb

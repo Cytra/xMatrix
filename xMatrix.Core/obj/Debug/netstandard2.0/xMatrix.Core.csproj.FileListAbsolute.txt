@@ -1,0 +1,8 @@
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\bin\Debug\netstandard2.0\xMatrix.Core.deps.json
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\bin\Debug\netstandard2.0\xMatrix.Core.dll
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\bin\Debug\netstandard2.0\xMatrix.Core.pdb
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\obj\Debug\netstandard2.0\xMatrix.Core.AssemblyInfoInputs.cache
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\obj\Debug\netstandard2.0\xMatrix.Core.AssemblyInfo.cs
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\obj\Debug\netstandard2.0\xMatrix.Core.dll
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\obj\Debug\netstandard2.0\xMatrix.Core.pdb
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix.Core\obj\Debug\netstandard2.0\xMatrix.Core.csprojAssemblyReference.cache
