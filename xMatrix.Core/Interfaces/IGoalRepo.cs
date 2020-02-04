@@ -9,5 +9,7 @@ namespace xMatrix.Core.Interfaces
     {
         List<Goal> GetAllGoals();
         void SaveGoals(List<Goal> goals);
+
+        event EventHandler<RepoEventArgs> NewData;
     }
 }

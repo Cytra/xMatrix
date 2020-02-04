@@ -64,13 +64,15 @@ namespace xMatrix.ViewModels
 
         private ObservableCollection<DemoItem> GenerateDemoItems(ISnackbarMessageQueue snackbarMessageQueue)
         {
+            var repo = new GoalRepo();
+
             if (snackbarMessageQueue == null)
                 throw new ArgumentNullException(nameof(snackbarMessageQueue));
 
             return new ObservableCollection<DemoItem>
             {
 
-               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( new GoalRepo()) } ,
+               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( repo, new LevelOneMatrixService()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
@@ -82,19 +84,19 @@ namespace xMatrix.ViewModels
                         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                     },
 
-               new DemoItem("Level 2", new LevelTwoMatrix { DataContext = new LevelTwoMatrixViewModel() } ,
-                    new []
-                    {
-                        DocumentationLink.WikiLink("Button-Styles", "Buttons"),
-                        DocumentationLink.StyleLink("Button"),
-                        DocumentationLink.StyleLink("PopupBox"),
-                        DocumentationLink.ApiLink<PopupBox>()
-                    })
-                    {
-                        VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
-                    },
+               //new DemoItem("Level 2", new LevelTwoMatrix { DataContext = new LevelTwoMatrixViewModel() } ,
+               //     new []
+               //     {
+               //         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
+               //         DocumentationLink.StyleLink("Button"),
+               //         DocumentationLink.StyleLink("PopupBox"),
+               //         DocumentationLink.ApiLink<PopupBox>()
+               //     })
+               //     {
+               //         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
+               //     },
 
-               new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(new GoalRepo(), new IdService()) } ,
+               new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(repo, new IdService()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),

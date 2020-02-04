@@ -23,12 +23,24 @@ namespace xMatrix.Tests.ServiceTests
         }
 
         [Test]
-        public void GetFreeIdTests()
+        public void GetFreeIdTests_ShouldReturnOne()
         {
             var goals = new List<Goal>();
             var sut = _fixture.Create<IdService>();
             var result = sut.GetFreeId(goals);
             Assert.AreEqual(1, result);
+        }
+
+        [Test]
+        public void GetFreeIdTests_ShouldReturnFour()
+        {
+            var goals = new List<Goal>();
+            goals.Add(new Goal() { Id = 1 });
+            goals.Add(new Goal() { Id = 2 });
+            goals.Add(new Goal() { Id = 3 });
+            var sut = _fixture.Create<IdService>();
+            var result = sut.GetFreeId(goals);
+            Assert.AreEqual(4, result);
         }
     }
 }

@@ -16,17 +16,12 @@ namespace xMatrix.Core.Services
 
         public int GetFreeId(List<Goal> goals)
         {
-            var result = 1;
+            var result = 0;
             if(goals.Count > 0)
             {
                 result = goals.Max(x => x.Id);
             }
-
-            if(result <= 0)
-            {
-                return 1;
-            }
-            return result;
+            return result + 1;
         }
     }
 }

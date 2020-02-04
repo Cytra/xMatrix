@@ -24,15 +24,19 @@ namespace xMatrix.ViewModels
             set { _goalTypes = value; }
         }
 
-        private List<Goal> _goals;
+        private List<Goal> _goals = new List<Goal>();
 
         public List<Goal> Goals
         {
             get { return _goals; }
-            set { _goals = value; }
+            set
+            {
+                _goals = value;
+                OnPropertyChanged(nameof(Goals));
+            }
         }
 
-        private List<Goal> _allRelatedGoals;
+        private List<Goal> _allRelatedGoals = new List<Goal>();
 
         public List<Goal> AllRelatedGoals
         {
@@ -40,16 +44,21 @@ namespace xMatrix.ViewModels
             set
             {
                 _allRelatedGoals = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(AllRelatedGoals));
             }
         }
 
-        private List<Goal> _relatedGoals;
+
+        private List<Goal> _relatedGoals = new List<Goal>();
 
         public List<Goal> RelatedGoals
         {
             get { return _relatedGoals; }
-            set { _relatedGoals = value; }
+            set
+            {
+                _relatedGoals = value;
+                OnPropertyChanged(nameof(RelatedGoals));
+            }
         }
 
         private Goal _selectedGoal;
@@ -80,27 +89,44 @@ namespace xMatrix.ViewModels
             set { _selectedRelatedGoal = value; }
         }
 
+        private Goal _selectedRemoveRelatedGoal;
+
+        public Goal SelectedRemoveRelatedGoal
+        {
+            get { return _selectedRemoveRelatedGoal; }
+            set { _selectedRemoveRelatedGoal = value; }
+        }
+
+
         private string _newGoalName;
 
         public string NewGoalName
         {
             get { return _newGoalName; }
-            set { _newGoalName = value; }
+            set
+            {
+                _newGoalName = value;
+                OnPropertyChanged(nameof(NewGoalName));
+            }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private string _newGoalType;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string NewGoalType
         {
             get { return _newGoalType; }
-            set { _newGoalType = value; }
+            set
+            {
+                _newGoalType = value;
+                OnPropertyChanged(nameof(NewGoalName));
+            }
         }
 
         public ICommand AddNewGoal { get; set; }
         public ICommand AddRelatedGoal { get; set; }
         public ICommand RemoveRelatedGoal { get; set; }
+        public ICommand DeleteGoal { get; set; }
 
         public UserInputViewModel(IGoalRepo repo, IidService idService)
         {
@@ -109,12 +135,40 @@ namespace xMatrix.ViewModels
             AddNewGoal = new DelegateCommand(ExcecuteAddNewGoal, CanExcecuteAddNewGoal);
             AddRelatedGoal = new DelegateCommand(ExcecuteAddRelatedGoal, CanExcecuteAddRelatedGoal);
             RemoveRelatedGoal = new DelegateCommand(ExcecuteRemoveRelatedGoal, CanExcecuteRemoveRelatedGoal);
+            DeleteGoal = new DelegateCommand(ExcecuteDeleteGoal, CanExcecuteDeleteGoal);
+            Goals = _repo.GetAllGoals();
+        }
+
+        private void SubscribeToRepoEvent()
+        {
+
+        }
+
+        private bool CanExcecuteDeleteGoal()
+        {
+            if (SelectedGoal == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void ExcecuteDeleteGoal()
+        {
+
+            foreach(var goal in Goals)
+            {
+                goal.Relates.Remove(SelectedGoal.Id);
+            }
+            Goals.Remove(SelectedGoal);
+
+            _repo.SaveGoals(Goals);
             Goals = _repo.GetAllGoals();
         }
 
         private bool CanExcecuteRemoveRelatedGoal()
         {
-            if (SelectedRelatedGoal != null)
+            if (SelectedRemoveRelatedGoal == null)
             {
                 return false;
             }
@@ -123,12 +177,14 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteRemoveRelatedGoal()
         {
-
+            SelectedGoal.Relates.Remove(SelectedRemoveRelatedGoal.Id);
+            _repo.SaveGoals(Goals);
+            Goals = _repo.GetAllGoals();
         }
 
         private bool CanExcecuteAddRelatedGoal()
         {
-            if (SelectedAllRelatedGoal == null)
+            if (SelectedRelatedGoal == null)
             {
                 return false;
             }
@@ -137,7 +193,11 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteAddRelatedGoal()
         {
-            
+            SelectedGoal.Relates.Add(SelectedRelatedGoal.Id);
+            _repo.SaveGoals(Goals);
+            Goals = _repo.GetAllGoals();
+            AllRelatedGoals = new List<Goal>();
+            RelatedGoals = new List<Goal>();
         }
 
         private bool CanExcecuteAddNewGoal()
@@ -162,24 +222,40 @@ namespace xMatrix.ViewModels
             newGoal.GoalType = NewGoalType;
             Goals.Add(newGoal);
             _repo.SaveGoals(Goals);
+            Goals = _repo.GetAllGoals();
+            NewGoalName = "";
         }
 
         private void UpdateAllRelatedGoals()
         {
-            switch (SelectedGoal.GoalType)
+            if (SelectedGoal == null)
             {
-                case GoalType.LongTerm:
-                    AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.OneYear).ToList();
-                    break;
-                case GoalType.OneYear:
-                    AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.ShortTerm).ToList();
-                    break;
-                case GoalType.ShortTerm:
-                    AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.Monthly).ToList();
-                    break;
-                case GoalType.Monthly:
-                    AllRelatedGoals = new List<Goal>();
-                    break;
+                AllRelatedGoals = new List<Goal>();
+            }
+            else
+            {
+
+
+                switch (SelectedGoal.GoalType)
+                {
+                    case GoalType.LongTerm:
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.OneYear).ToList();
+                        break;
+                    case GoalType.OneYear:
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.ShortTerm).ToList();
+                        break;
+                    case GoalType.ShortTerm:
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.Monthly).ToList();
+                        break;
+                    case GoalType.Monthly:
+                        AllRelatedGoals = new List<Goal>();
+                        break;
+                }
+
+                SelectedGoal.Relates.ForEach(x => AllRelatedGoals.RemoveAll(y => y.Id == x));
+                var relatedGoals = new List<Goal>();
+                SelectedGoal.Relates.ForEach(x => relatedGoals.Add(Goals.FirstOrDefault(y => y.Id == x)));
+                RelatedGoals = relatedGoals;
             }
         }
 
