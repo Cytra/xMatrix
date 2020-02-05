@@ -12,9 +12,9 @@ namespace xMatrix.Core.Services
     {
         private List<RectItem> RectItems = new List<RectItem>();
         public List<Polygon> Polygons { get; set; } = new List<Polygon>();
-        private const double SquareWidth = 30;
-        private const double RectWidth = 300;
-        private const double rectheight = 30;
+        private const double SquareWidth = 20;
+        private const double RectWidth = 200;
+        private const double rectheight = 20;
 
         public LevelOneMatrixService()
         {
@@ -23,12 +23,16 @@ namespace xMatrix.Core.Services
 
         public List<Polygon> GeneratePolygonList(List<Goal> goals)
         {
+            RectItems = new List<RectItem>();
+            Polygons = new List<Polygon>();
             GenerateMid(goals);
             return Polygons;
         }
 
         public List<RectItem> GenerateRectList(List<Goal> goals)
         {
+            RectItems = new List<RectItem>();
+            Polygons = new List<Polygon>();
             GenerateTopLeftRects(goals);
             GenerateTopMidRects(goals);
             GenerateTopRightRects(goals);
@@ -68,7 +72,7 @@ namespace xMatrix.Core.Services
             double yLoc = 0;
             foreach (var shortTermGoal in shortTermGoals)
             {
-                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = rectheight, Width = RectWidth, Text = shortTermGoal.Id.ToString() + shortTermGoal.Name });
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = rectheight, Width = RectWidth, Text = shortTermGoal.Name });
                 yLoc += SquareWidth;
             }
         }
@@ -103,7 +107,7 @@ namespace xMatrix.Core.Services
 
             foreach (var oneYearGoal in oneYearGoals)
             {
-                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = RectWidth, Width = rectheight, Text = oneYearGoal.Id.ToString() + oneYearGoal.Name, Rotate = 270 });
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = RectWidth, Width = rectheight, Text = oneYearGoal.Name, Rotate = 270 });
                 xLoc += SquareWidth;
             }
         }
@@ -119,7 +123,7 @@ namespace xMatrix.Core.Services
 
             foreach (var monthlyGoal in monthlyGoals)
             {
-                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = RectWidth, Width = rectheight, Text = monthlyGoal.Id.ToString() + monthlyGoal.Name, Rotate = 270 });
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = RectWidth, Width = rectheight, Text = monthlyGoal.Name, Rotate = 270 });
                 xLoc += SquareWidth;
             }
         }
@@ -156,7 +160,7 @@ namespace xMatrix.Core.Services
 
             foreach (var longTermGoal in longTermGoals)
             {
-                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = rectheight, Width = RectWidth, Text = longTermGoal.Id.ToString() + longTermGoal.Name });
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = rectheight, Width = RectWidth, Text = longTermGoal.Name });
                 yLoc += SquareWidth;
             }
         }

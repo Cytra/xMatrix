@@ -72,7 +72,7 @@ namespace xMatrix.ViewModels
             return new ObservableCollection<DemoItem>
             {
 
-               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( repo, new LevelOneMatrixService()) } ,
+               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( repo, new LevelOneMatrixService(), new IdService()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
@@ -96,17 +96,17 @@ namespace xMatrix.ViewModels
                //         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                //     },
 
-               new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(repo, new IdService()) } ,
-                    new []
-                    {
-                        DocumentationLink.WikiLink("Button-Styles", "Buttons"),
-                        DocumentationLink.StyleLink("Button"),
-                        DocumentationLink.StyleLink("PopupBox"),
-                        DocumentationLink.ApiLink<PopupBox>()
-                    })
-                    {
-                        VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
-                    },
+               //new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(repo, new IdService()) } ,
+               //     new []
+               //     {
+               //         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
+               //         DocumentationLink.StyleLink("Button"),
+               //         DocumentationLink.StyleLink("PopupBox"),
+               //         DocumentationLink.ApiLink<PopupBox>()
+               //     })
+               //     {
+               //         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
+               //     },
 
             };
         }

@@ -42,3 +42,7 @@ C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\UserI
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\UserInput.baml
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\xMatrix.exe.manifest
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\xMatrix.application
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\xMatrix.exe.manifest
+C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\xMatrix.application
