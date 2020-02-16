@@ -8,6 +8,6 @@ namespace xMatrix.Core.Interfaces
     public interface IMatrixService
     {
         List<Polygon> GeneratePolygonList(List<Goal> goals);
-        List<RectItem> GenerateRectList(List<Goal> goals);
+        List<RectItem> GenerateRectList(List<Goal> goals, List<Person> people);
     }
 }

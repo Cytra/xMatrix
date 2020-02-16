@@ -363,15 +363,15 @@ namespace xMatrix.ViewModels
             switch (SelectedmatrixLevel)
             {
                 case "One":
-                    RectItems = _levelOneMatrixService.GenerateRectList(GoalList);
+                    RectItems = _levelOneMatrixService.GenerateRectList(GoalList, AllPeople);
                     Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList);
                     break;
                 case "Two":
-                    RectItems = _leveltwoMatrixService.GenerateRectList(GoalList);
+                    RectItems = _leveltwoMatrixService.GenerateRectList(GoalList, AllPeople);
                     Polygons = _leveltwoMatrixService.GeneratePolygonList(GoalList);
                     break;
                 case "Three":
-                    RectItems = _levelTreeMatrixService.GenerateRectList(GoalList);
+                    RectItems = _levelTreeMatrixService.GenerateRectList(GoalList, AllPeople);
                     Polygons = _levelTreeMatrixService.GeneratePolygonList(GoalList);
                     break;
             }
@@ -401,7 +401,7 @@ namespace xMatrix.ViewModels
             Goals = eventArgs.Goals;
             RectItems = new List<RectItem>();
             Polygons = new List<Polygon>();
-            RectItems = _levelOneMatrixService.GenerateRectList(GoalList);
+            RectItems = _levelOneMatrixService.GenerateRectList(GoalList, AllPeople);
             Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList);
         }
 

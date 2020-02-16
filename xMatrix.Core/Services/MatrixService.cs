@@ -46,7 +46,7 @@ namespace xMatrix.Core.Services
             return Polygons;
         }
 
-        public List<RectItem> GenerateRectList(List<Goal> goals)
+        public List<RectItem> GenerateRectList(List<Goal> goals, List<Person> people)
         {
             ClearLists();
             GenerateTopLeftRects(goals);
@@ -58,6 +58,8 @@ namespace xMatrix.Core.Services
             GenerateBottomMidRects(goals);
             GenerateBottomRightRects(goals);
             GenerateMidRects(goals, _topGoalType, _bottomGoalType, _leftGoalType, _rightGoalType);
+            GenerateTopPersonRects(goals, people);
+            GenerateMidPersonRects(goals, people);
             return RectItems;
         }
 
@@ -231,6 +233,45 @@ namespace xMatrix.Core.Services
             RectItems.Add(new RectItem() { X = xLoc, Y = yLoc + _rectWidth - _rectheight * 2, Height = _rectheight, Width = _rectWidth, Text = bottomGoal, Stroke = "" });
             RectItems.Add(new RectItem() { X = xLoc, Y = yLoc + _rectWidth / 2 - _rectheight / 2, Height = _rectheight, Width = _rectWidth / 2, Text = leftGoal, Stroke = "" });
             RectItems.Add(new RectItem() { X = xLoc + _rectWidth / 2, Y = yLoc + _rectWidth / 2 - _rectheight / 2, Height = _rectheight, Width = _rectWidth / 2, Text = rightGoal, Stroke = "" });
+        }
+
+        private void GenerateTopPersonRects(List<Goal> goals, List<Person> people)
+        {
+            var shortTermGoals = goals.Where(x => x.GoalType == _topGoalType);
+            var oneYearGoals = goals.Where(x => x.GoalType == _leftGoalType);
+            var monthlyGoals = goals.Where(x => x.GoalType == _rightGoalType);
+            var longTermGoals = goals.Where(x => x.GoalType == _bottomGoalType);
+
+            double xLoc = (double)oneYearGoals.ToList().Count * _squareWidth + _rectWidth + (double)monthlyGoals.ToList().Count * _squareWidth + _squareWidth;
+
+            foreach (var person in people)
+            {
+                double yLoc = 0;
+                foreach (var shortTermGoal in shortTermGoals)
+                {
+                    var relates = shortTermGoal.RelatesPerson.Contains(person.Id);
+                    RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectheight, Width = _rectheight, Text = relates ? "O" : "" });
+                    yLoc += _squareWidth;
+                }
+                xLoc += _squareWidth;
+            }
+        }
+
+        private void GenerateMidPersonRects(List<Goal> goals, List<Person> people)
+        {
+            var shortTermGoals = goals.Where(x => x.GoalType == _topGoalType);
+            var oneYearGoals = goals.Where(x => x.GoalType == _leftGoalType);
+            var monthlyGoals = goals.Where(x => x.GoalType == _rightGoalType);
+            var longTermGoals = goals.Where(x => x.GoalType == _bottomGoalType);
+
+            double xLoc = (double)oneYearGoals.ToList().Count * _squareWidth + _rectWidth + (double)monthlyGoals.ToList().Count * _squareWidth + _squareWidth;
+            double yLoc = (double)shortTermGoals.ToList().Count * _squareWidth;
+
+            foreach (var person in people)
+            {
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectWidth, Width = _rectheight, Text = person.Name, Rotate = 270 });
+                xLoc += _squareWidth;
+            }
         }
     }
 }

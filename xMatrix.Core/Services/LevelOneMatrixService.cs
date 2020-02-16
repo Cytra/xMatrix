@@ -35,9 +35,9 @@ namespace xMatrix.Core.Services
             return _matrixService.GeneratePolygonList(goals);
         }
 
-        public List<RectItem> GenerateRectList(List<Goal> goals)
+        public List<RectItem> GenerateRectList(List<Goal> goals, List<Person> people)
         {
-            return _matrixService.GenerateRectList(goals);
+            return _matrixService.GenerateRectList(goals, people);
         }
     }
 }
