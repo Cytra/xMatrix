@@ -19,9 +19,9 @@ namespace xMatrix.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private readonly IGoalRepo _repo;
-        private readonly ILevelOneMatrixService _levelOneMatrixService;
-
-
+        private readonly ILevelMatrixService _levelOneMatrixService;
+        private readonly ILevelMatrixService _leveltwoMatrixService;
+        private readonly ILevelMatrixService _levelTreeMatrixService;
         private List<RectItem> _rectItems = new List<RectItem>();
 
         public List<RectItem> RectItems
@@ -48,11 +48,14 @@ namespace xMatrix.ViewModels
 
         public List<Goal> GoalList { get; set; } = new List<Goal>();
 
-        //Input
-
-        //private readonly IGoalRepo _repo;
         private readonly IidService _idService;
-        private List<string> _goalTypes = new List<string>() { GoalType.LongTerm, GoalType.Monthly, GoalType.OneYear, GoalType.ShortTerm };
+        private List<string> _goalTypes = new List<string>() {
+            GoalType.LongTerm,
+            GoalType.OneYear,
+            GoalType.ShortTerm,
+            GoalType.InitiativesOne,
+            GoalType.InitiativesTwo,
+            GoalType.InitiativesThree};
 
         public List<string> GoalTypes
         {
@@ -145,7 +148,6 @@ namespace xMatrix.ViewModels
                 OnPropertyChanged(nameof(NewGoalName));
             }
         }
-        //public event PropertyChangedEventHandler PropertyChanged;
 
         private string _newGoalType;
 
@@ -163,41 +165,97 @@ namespace xMatrix.ViewModels
         public ICommand AddRelatedGoal { get; set; }
         public ICommand RemoveRelatedGoal { get; set; }
         public ICommand DeleteGoal { get; set; }
+        public ICommand GetLevelOneMatrix { get; set; }
+        public ICommand GetLevelTwoMatrix { get; set; }
+        public ICommand GetLevelThreeMatrix { get; set; }
 
+        private string _selectedmatrixLevel;
 
-        public LevelOneMatrixViewModel(IGoalRepo repo, ILevelOneMatrixService levelOneMatrixService, IidService idService)
+        public string SelectedmatrixLevel
         {
+            get { return _selectedmatrixLevel; }
+            set
+            {
+                _selectedmatrixLevel = value;
+                //UpdateCanvas();
+            }
+        }
+
+        public LevelOneMatrixViewModel(
+            IGoalRepo repo,
+            ILevelMatrixService levelOneMatrixService,
+            ILevelMatrixService leveltwoMatrixService,
+            ILevelMatrixService levelTreeMatrixService,
+            IidService idService)
+        {
+            SelectedmatrixLevel = "One";
             _repo = repo;
             _levelOneMatrixService = levelOneMatrixService;
+            _leveltwoMatrixService = leveltwoMatrixService;
+            _levelTreeMatrixService = levelTreeMatrixService;
             _repo.NewData += OnNewRepoData;
-            GoalList = _repo.GetAllGoals();
-            RectItems = _levelOneMatrixService.GenerateRectList(GoalList);
-            Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList);
-
-            //Input
-
-            //_repo = repo;
+            
+            
             _idService = idService;
             AddNewGoal = new DelegateCommand(ExcecuteAddNewGoal, CanExcecuteAddNewGoal);
             AddRelatedGoal = new DelegateCommand(ExcecuteAddRelatedGoal, CanExcecuteAddRelatedGoal);
             RemoveRelatedGoal = new DelegateCommand(ExcecuteRemoveRelatedGoal, CanExcecuteRemoveRelatedGoal);
             DeleteGoal = new DelegateCommand(ExcecuteDeleteGoal, CanExcecuteDeleteGoal);
+            GetLevelOneMatrix = new DelegateCommand(ExcecuteGetLevelOneMatrix);
+            GetLevelTwoMatrix = new DelegateCommand(ExcecuteGetLevelTwoMatrix);
+            GetLevelThreeMatrix = new DelegateCommand(ExcecuteGetLevelThreeMatrix);
             Goals = _repo.GetAllGoals();
+            GoalList = _repo.GetAllGoals();
+            UpdateCanvas();
+        }
+
+        private void UpdateCanvas()
+        {
+
+            switch (SelectedmatrixLevel)
+            {
+                case "One":
+                    RectItems = _levelOneMatrixService.GenerateRectList(GoalList);
+                    Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList);
+                    break;
+                case "Two":
+                    RectItems = _leveltwoMatrixService.GenerateRectList(GoalList);
+                    Polygons = _leveltwoMatrixService.GeneratePolygonList(GoalList);
+                    break;
+                case "Three":
+                    RectItems = _levelTreeMatrixService.GenerateRectList(GoalList);
+                    Polygons = _levelTreeMatrixService.GeneratePolygonList(GoalList);
+                    break;
+            }
+
+
+        }
+
+        private void ExcecuteGetLevelThreeMatrix()
+        {
+            SelectedmatrixLevel = "Three";
+            UpdateCanvas();
+        }
+
+        private void ExcecuteGetLevelTwoMatrix()
+        {
+            SelectedmatrixLevel = "Two";
+            UpdateCanvas();
+        }
+
+        private void ExcecuteGetLevelOneMatrix()
+        {
+            SelectedmatrixLevel = "One";
+            UpdateCanvas();
         }
 
         public void OnNewRepoData(object sender, RepoEventArgs eventArgs)
         {
-
             GoalList = eventArgs.Goals;
             RectItems = new List<RectItem>();
             Polygons = new List<Polygon>();
             RectItems = _levelOneMatrixService.GenerateRectList(GoalList);
             Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList);
-        }
-
-        private void SubscribeToRepoEvent()
-        {
-
         }
 
         private bool CanExcecuteDeleteGoal()
@@ -290,8 +348,6 @@ namespace xMatrix.ViewModels
             }
             else
             {
-
-
                 switch (SelectedGoal.GoalType)
                 {
                     case GoalType.LongTerm:
@@ -301,9 +357,15 @@ namespace xMatrix.ViewModels
                         AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.ShortTerm).ToList();
                         break;
                     case GoalType.ShortTerm:
-                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.Monthly).ToList();
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.InitiativesOne).ToList();
                         break;
-                    case GoalType.Monthly:
+                    case GoalType.InitiativesOne:
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.InitiativesTwo).ToList();
+                        break;
+                    case GoalType.InitiativesTwo:
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.InitiativesThree).ToList();
+                        break;
+                    case GoalType.InitiativesThree:
                         AllRelatedGoals = new List<Goal>();
                         break;
                 }

@@ -16,7 +16,7 @@ namespace xMatrix.ViewModels
     {
         private readonly IGoalRepo _repo;
         private readonly IidService _idService;
-        private List<string> _goalTypes = new List<string>() { GoalType.LongTerm, GoalType.Monthly, GoalType.OneYear, GoalType.ShortTerm };
+        private List<string> _goalTypes = new List<string>() { GoalType.LongTerm, GoalType.InitiativesOne, GoalType.OneYear, GoalType.ShortTerm };
 
         public List<string> GoalTypes
         {
@@ -234,8 +234,6 @@ namespace xMatrix.ViewModels
             }
             else
             {
-
-
                 switch (SelectedGoal.GoalType)
                 {
                     case GoalType.LongTerm:
@@ -245,9 +243,9 @@ namespace xMatrix.ViewModels
                         AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.ShortTerm).ToList();
                         break;
                     case GoalType.ShortTerm:
-                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.Monthly).ToList();
+                        AllRelatedGoals = Goals.Where(x => x.GoalType == GoalType.InitiativesOne).ToList();
                         break;
-                    case GoalType.Monthly:
+                    case GoalType.InitiativesOne:
                         AllRelatedGoals = new List<Goal>();
                         break;
                 }

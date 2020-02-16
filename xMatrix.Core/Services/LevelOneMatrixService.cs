@@ -8,7 +8,7 @@ using xMatrix.Core.Models;
 
 namespace xMatrix.Core.Services
 {
-    public class LevelOneMatrixService : ILevelOneMatrixService
+    public class LevelMatrixService : ILevelMatrixService
     {
         private List<RectItem> RectItems = new List<RectItem>();
         public List<Polygon> Polygons { get; set; } = new List<Polygon>();
@@ -18,7 +18,7 @@ namespace xMatrix.Core.Services
         private readonly IMatrixService _matrixService;
         private readonly IMatrixGridService _matrixGridService;
 
-        public LevelOneMatrixService(
+        public LevelMatrixService(
             IMatrixService matrixService,
             IMatrixGridService matrixGridService
             )

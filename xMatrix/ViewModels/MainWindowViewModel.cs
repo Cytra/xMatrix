@@ -73,13 +73,19 @@ namespace xMatrix.ViewModels
             return new ObservableCollection<DemoItem>
             {
 
-               new DemoItem("Matrix", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( 
-                   repo, 
-                   new LevelOneMatrixService(
-                       new MatrixService(new MatrixGridService(), GoalType.LongTerm, GoalType.OneYear, GoalType.ShortTerm, GoalType.Monthly), 
-                           new MatrixGridService()), 
+               new DemoItem("Matrix", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel(
+                   repo,
+                   new LevelMatrixService(
+                       new MatrixService(new MatrixGridService(), GoalType.LongTerm, GoalType.OneYear, GoalType.ShortTerm, GoalType.InitiativesOne),
+                           new MatrixGridService()),
+                   new LevelMatrixService(
+                       new MatrixService(new MatrixGridService(), GoalType.OneYear, GoalType.ShortTerm, GoalType.InitiativesOne, GoalType.InitiativesTwo),
+                           new MatrixGridService()),
+                   new LevelMatrixService(
+                       new MatrixService(new MatrixGridService(),  GoalType.ShortTerm, GoalType.InitiativesOne, GoalType.InitiativesTwo, GoalType.InitiativesThree),
+                           new MatrixGridService()),
                            new IdService()) } ,
-                    new []
+                    new[]
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
                         DocumentationLink.StyleLink("Button"),
@@ -87,7 +93,7 @@ namespace xMatrix.ViewModels
                         DocumentationLink.ApiLink<PopupBox>()
                     })
                     {
-                        VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
+                VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                     },
 
                //new DemoItem("Level 2", new LevelTwoMatrix { DataContext = new LevelTwoMatrixViewModel() } ,
@@ -115,16 +121,16 @@ namespace xMatrix.ViewModels
                //     },
 
             };
-        }
-
-        private void FilterItems(string keyword)
-        {
-            var filteredItems =
-                string.IsNullOrWhiteSpace(keyword) ?
-                _allItems :
-                _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
-
-            DemoItems = new ObservableCollection<DemoItem>(filteredItems);
-        }
     }
+
+    private void FilterItems(string keyword)
+    {
+        var filteredItems =
+            string.IsNullOrWhiteSpace(keyword) ?
+            _allItems :
+            _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
+
+        DemoItems = new ObservableCollection<DemoItem>(filteredItems);
+    }
+}
 }

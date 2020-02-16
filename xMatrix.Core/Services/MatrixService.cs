@@ -57,7 +57,7 @@ namespace xMatrix.Core.Services
             GenerateBottomLeftRects(goals);
             GenerateBottomMidRects(goals);
             GenerateBottomRightRects(goals);
-            GenerateMidRects(goals, GoalType.ShortTerm, GoalType.LongTerm, GoalType.OneYear, GoalType.Monthly);
+            GenerateMidRects(goals, _topGoalType, _bottomGoalType, _leftGoalType, _rightGoalType);
             return RectItems;
         }
 

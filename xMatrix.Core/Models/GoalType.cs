@@ -9,6 +9,8 @@ namespace xMatrix.Core.Models
         public const string LongTerm = "LongTerm";
         public const string OneYear = "OneYear";
         public const string ShortTerm = "ShortTerm";
-        public const string Monthly = "Monthly";
+        public const string InitiativesOne = "Initiatives One";
+        public const string InitiativesTwo = "Initiatives Two";
+        public const string InitiativesThree = "Initiatives Three";
     }
 }

@@ -6,7 +6,7 @@ using xMatrix.Core.Models;
 
 namespace xMatrix.Core.Interfaces
 {
-    public interface ILevelOneMatrixService
+    public interface ILevelMatrixService
     {
         List<Polygon> GeneratePolygonList(List<Goal> goals);
         List<RectItem> GenerateRectList(List<Goal> goals);
