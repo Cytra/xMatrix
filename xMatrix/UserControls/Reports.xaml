@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="xMatrix.UserControls.Reports"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:xMatrix.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions >
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+            HorizontalAlignment="Center">
+            Level One Report
+        </TextBlock>
+        
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            ItemsSource="{Binding LevelOneReport ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Person.Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.Name}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="2"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+            HorizontalAlignment="Center">
+            Level Two Report
+        </TextBlock>
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="2"
+            ItemsSource="{Binding LevelTwoReport ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Person.Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.Name}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="4"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+            HorizontalAlignment="Center">
+            Level Three Report
+        </TextBlock>
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="4"
+            ItemsSource="{Binding LevelThreeReport ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            >
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Person.Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.Name}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                <materialDesign:DataGridTextColumn
+                    Binding="{Binding Goal.GoalType}"
+                    Header="Goal Type"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

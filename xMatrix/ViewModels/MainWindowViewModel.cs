@@ -98,17 +98,17 @@ namespace xMatrix.ViewModels
                 VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                     },
 
-               //new DemoItem("Level 2", new LevelTwoMatrix { DataContext = new LevelTwoMatrixViewModel() } ,
-               //     new []
-               //     {
-               //         DocumentationLink.WikiLink("Button-Styles", "Buttons"),
-               //         DocumentationLink.StyleLink("Button"),
-               //         DocumentationLink.StyleLink("PopupBox"),
-               //         DocumentationLink.ApiLink<PopupBox>()
-               //     })
-               //     {
-               //         VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
-               //     },
+               new DemoItem("Reports", new Reports { DataContext = new ReportsViewModel(repo, personRepo) } ,
+                    new []
+                    {
+                        DocumentationLink.WikiLink("Button-Styles", "Buttons"),
+                        DocumentationLink.StyleLink("Button"),
+                        DocumentationLink.StyleLink("PopupBox"),
+                        DocumentationLink.ApiLink<PopupBox>()
+                    })
+                    {
+                        VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
+                    },
 
                //new DemoItem("Input", new UserInput { DataContext = new UserInputViewModel(repo, new IdService()) } ,
                //     new []

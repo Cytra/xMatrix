@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="xMatrix.exe" size="61408">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="xMatrix.exe" size="68064">
       <assemblyIdentity name="xMatrix" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>d0gnoIMoAGPn0x8kk2X9wPkAAoO8baLQPszO+9D1SZc=</dsig:DigestValue>
+        <dsig:DigestValue>0m8++BsZ69wTsMog/MaIl4BtbHQE5Ep8k3zjec7arIs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -181,7 +181,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UsZXiDRc8mpj7PklPSUWgE+bO+s6Indp/PiiIxPdp0k=</dsig:DigestValue>
+        <dsig:DigestValue>IiCx2x5ytDvTCNapWbzBavb64ZtpwI2BDTybGgXNOlE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

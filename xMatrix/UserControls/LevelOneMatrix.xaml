@@ -107,7 +107,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="25*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="15*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -126,8 +126,8 @@
                 <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
+
+                <RowDefinition Height="5*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <TextBox 
