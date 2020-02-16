@@ -9,6 +9,7 @@ using System.Linq;
 using xMatrix.Models;
 using xMatrix.UserControls;
 using xMatrix.Core.Services;
+using xMatrix.Core.Models;
 
 namespace xMatrix.ViewModels
 {
@@ -72,7 +73,12 @@ namespace xMatrix.ViewModels
             return new ObservableCollection<DemoItem>
             {
 
-               new DemoItem("Level 1", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( repo, new LevelOneMatrixService(), new IdService()) } ,
+               new DemoItem("Matrix", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel( 
+                   repo, 
+                   new LevelOneMatrixService(
+                       new MatrixService(new MatrixGridService(), GoalType.LongTerm, GoalType.OneYear, GoalType.ShortTerm, GoalType.Monthly), 
+                           new MatrixGridService()), 
+                           new IdService()) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),

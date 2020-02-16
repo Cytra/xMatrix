@@ -31,9 +31,7 @@ C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\ICSharpCode.Avalon
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\ShowMeTheXAML.AvalonEdit.dll
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\ShowMeTheXAML.dll
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\bin\Debug\ICSharpCode.AvalonEdit.xml
-C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\Home.g.cs
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\xMatrix_MarkupCompile.lref
-C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\Home.baml
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelOneMatrix.g.cs
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelTwoMatrix.g.cs
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\obj\Debug\UserControls\LevelOneMatrix.baml

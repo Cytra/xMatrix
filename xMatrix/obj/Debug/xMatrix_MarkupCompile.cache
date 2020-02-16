@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Cytra\Desktop\xMatrix repo\xMatrix\xMatrix\App.xaml
-5-933827314
+4-1623971595
 
-19-582740224
+182006904432
 128704444703
-MainWindow.xaml;UserControls\Home.xaml;UserControls\LevelOneMatrix.xaml;UserControls\LevelTwoMatrix.xaml;UserControls\UserInput.xaml;
+MainWindow.xaml;UserControls\LevelOneMatrix.xaml;UserControls\LevelTwoMatrix.xaml;UserControls\UserInput.xaml;
 
 False
 

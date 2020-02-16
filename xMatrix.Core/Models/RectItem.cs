@@ -12,5 +12,6 @@ namespace xMatrix.Core.Models
         public double Height { get; set; }
         public string Text { get; set; }
         public int Rotate { get; set; } = 0;
+        public string Stroke { get; set; } = "Black";
     }
 }
