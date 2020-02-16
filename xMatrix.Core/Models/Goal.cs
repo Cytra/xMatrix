@@ -9,6 +9,7 @@ namespace xMatrix.Core.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string GoalType { get; set; }
-        public List<int> Relates { get; set; } = new List<int>();
+        public List<int> RelatesGoals { get; set; } = new List<int>();
+        public List<int> RelatesPerson { get; set; } = new List<int>();
     }
 }

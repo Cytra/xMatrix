@@ -128,7 +128,6 @@
       <DependentUpon>UserInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LevelOneMatrixViewModel.cs" />
-    <Compile Include="ViewModels\LevelTwoMatrixViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\UserInputViewModel.cs" />
     <Page Include="MainWindow.xaml">

@@ -5,9 +5,9 @@ using xMatrix.Core.Models;
 
 namespace xMatrix.Core.Interfaces
 {
-    public interface IidService
+    public interface IPersonRepo
     {
-        int GetFreeId(List<Goal> goals);
-        int GetFreeId(List<Person> people);
+        List<Person> GetAllPeople();
+        void SavePeople(List<Person> people);
     }
 }

@@ -79,7 +79,7 @@ namespace xMatrix.Core.Services
                 double yLoc = 0;
                 foreach (var shortTermGoal in shortTermGoals)
                 {
-                    var relates = oneYearGoal.Relates.Contains(shortTermGoal.Id);
+                    var relates = oneYearGoal.RelatesGoals.Contains(shortTermGoal.Id);
                     RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectheight, Width = _rectheight, Text = relates ? "O" : "" });
                     yLoc += _squareWidth;
                 }
@@ -113,7 +113,7 @@ namespace xMatrix.Core.Services
                 double yLoc = 0;
                 foreach (var shortTermGoal in shortTermGoals)
                 {
-                    var relates = shortTermGoal.Relates.Contains(monthlyGoal.Id);
+                    var relates = shortTermGoal.RelatesGoals.Contains(monthlyGoal.Id);
                     RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectheight, Width = _rectheight, Text = relates ? "O" : "" });
                     yLoc += _squareWidth;
                 }
@@ -164,7 +164,7 @@ namespace xMatrix.Core.Services
                 double yLoc = shortTermGoals.ToList().Count * _squareWidth + _rectWidth;
                 foreach (var longTermGoal in longTermGoals)
                 {
-                    var relates = longTermGoal.Relates.Contains(oneYearGoal.Id);
+                    var relates = longTermGoal.RelatesGoals.Contains(oneYearGoal.Id);
                     RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectheight, Width = _rectheight, Text = relates ? "O" : "" });
                     yLoc += _squareWidth;
                 }

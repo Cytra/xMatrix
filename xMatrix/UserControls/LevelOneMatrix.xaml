@@ -9,7 +9,7 @@
              d:DesignHeight="800" d:DesignWidth="1500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="700"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -74,6 +74,15 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="5"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+            HorizontalAlignment="Center">
+            Add New Data
+        </TextBlock>
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -81,6 +90,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="10"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"></RowDefinition>
@@ -90,82 +100,87 @@
             <Button Grid.Column="0" Grid.Row="1" Command="{Binding GetLevelOneMatrix}">LEVEL 1</Button>
             <Button Grid.Column="2" Grid.Row="1" Command="{Binding GetLevelTwoMatrix}">LEVEL 2</Button>
             <Button Grid.Column="4" Grid.Row="1" Command="{Binding GetLevelThreeMatrix}">LEVEL 3</Button>
+
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-
-
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
 
-
-            <TextBlock
-            Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="5"
-            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
-            HorizontalAlignment="Center">
-            Add New Goals
-            </TextBlock>
-
             <TextBox 
-            Grid.Row="3" Grid.Column="1"
+            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
             materialDesign:HintAssist.Hint="Goal name" 
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             VerticalAlignment="Center"
             Text="{Binding NewGoalName ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <ComboBox
-            Grid.Row="3" Grid.Column="3"
+            Grid.Row="0" Grid.Column="5"
             materialDesign:HintAssist.Hint="Goal Type"
             SelectedItem="{Binding NewGoalType}"
             ItemsSource="{Binding GoalTypes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             </ComboBox>
 
             <Button
-            Grid.Row="3" Grid.Column="5"
+            Grid.Row="0" Grid.Column="7"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddNewGoal}">
-                ADD
+                ADD Goal
+            </Button>
+
+            <TextBox 
+            Grid.Row="1" Grid.Column="1"
+            Grid.ColumnSpan="5"
+            materialDesign:HintAssist.Hint="Person Name" 
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Center"
+            Text="{Binding NewPersonName ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Button
+            Grid.Row="1" Grid.Column="7"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding AddNewPerson}">
+                ADD PERSON
             </Button>
 
             <TextBlock
-            Grid.Row="5"
+            Grid.Row="2"
             Grid.Column="1"
-            Grid.ColumnSpan="5"
-            Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+            Grid.ColumnSpan="8"
+            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
             HorizontalAlignment="Center">
-            Modify Goals
+            Modify Data
             </TextBlock>
 
-
             <DataGrid
-            Height="400"
-            Grid.Row="7"
+            Grid.Row="4"
             Grid.Column="1"
-            Grid.RowSpan="1"
+            Grid.RowSpan="3"
             ItemsSource="{Binding Goals ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CanUserSortColumns="True"
             CanUserAddRows="False" 
@@ -186,7 +201,7 @@
             </DataGrid>
 
             <Button
-            Grid.Row="9" Grid.Column="1"
+            Grid.Row="8" Grid.Column="1"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding DeleteGoal}">
@@ -194,8 +209,7 @@
             </Button>
 
             <DataGrid
-                Height="400"
-            Grid.Row="7"
+            Grid.Row="4"
             Grid.Column="3"
             Grid.RowSpan="1"
             ItemsSource="{Binding AllRelatedGoals ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -218,7 +232,7 @@
             </DataGrid>
 
             <Button
-            Grid.Row="9" Grid.Column="3"
+            Grid.Row="5" Grid.Column="3"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddRelatedGoal}">
@@ -226,9 +240,8 @@
             </Button>
 
             <DataGrid
-                Height="400"
-            Grid.Row="7"
-            Grid.Column="5"
+            Grid.Row="6"
+            Grid.Column="3"
             Grid.RowSpan="1"
             ItemsSource="{Binding RelatedGoals ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CanUserSortColumns="True"
@@ -250,11 +263,72 @@
             </DataGrid>
 
             <Button
-            Grid.Row="9" Grid.Column="5"
+            Grid.Row="8" Grid.Column="3"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding RemoveRelatedGoal}">
                 REMOVE RELATION
+            </Button>
+
+            <DataGrid
+            Grid.Row="4"
+            Grid.Column="5"
+            Grid.RowSpan="3"
+            ItemsSource="{Binding People ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            SelectedItem="{Binding SelectedPerson}">
+                <DataGrid.Columns>
+                    <materialDesign:DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button
+            Grid.Row="7" Grid.Column="5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding AddRelatedPerson}">
+                ADD PERSON
+            </Button>
+            <Button
+            Grid.Row="8" Grid.Column="5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding DeletePerson}">
+                DELETE PERSON
+            </Button>
+
+            <DataGrid
+            Grid.Row="4"
+            Grid.Column="7"
+            Grid.RowSpan="3"
+            ItemsSource="{Binding AllRelatedPeople ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            CanUserSortColumns="True"
+            CanUserAddRows="False" 
+            AutoGenerateColumns="False"
+            SelectedItem="{Binding SelectedRelatedPerson}">
+                <DataGrid.Columns>
+                    <materialDesign:DataGridTextColumn
+                    Binding="{Binding Name}"
+                    Header="Name"
+                    IsReadOnly="True"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+            <Button
+            Grid.Row="8" Grid.Column="7"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Command="{Binding RemoveRelatedGoal}">
+                REMOVE PERSON
             </Button>
 
         </Grid>

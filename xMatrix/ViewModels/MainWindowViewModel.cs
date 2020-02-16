@@ -66,6 +66,7 @@ namespace xMatrix.ViewModels
         private ObservableCollection<DemoItem> GenerateDemoItems(ISnackbarMessageQueue snackbarMessageQueue)
         {
             var repo = new GoalRepo();
+            var personRepo = new PersonRepo();
 
             if (snackbarMessageQueue == null)
                 throw new ArgumentNullException(nameof(snackbarMessageQueue));
@@ -75,6 +76,7 @@ namespace xMatrix.ViewModels
 
                new DemoItem("Matrix", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel(
                    repo,
+                   personRepo,
                    new LevelMatrixService(
                        new MatrixService(new MatrixGridService(), GoalType.LongTerm, GoalType.OneYear, GoalType.ShortTerm, GoalType.InitiativesOne),
                            new MatrixGridService()),
@@ -121,16 +123,16 @@ namespace xMatrix.ViewModels
                //     },
 
             };
-    }
+        }
 
-    private void FilterItems(string keyword)
-    {
-        var filteredItems =
-            string.IsNullOrWhiteSpace(keyword) ?
-            _allItems :
-            _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
+        private void FilterItems(string keyword)
+        {
+            var filteredItems =
+                string.IsNullOrWhiteSpace(keyword) ?
+                _allItems :
+                _allItems.Where(i => i.Name.ToLower().Contains(keyword.ToLower()));
 
-        DemoItems = new ObservableCollection<DemoItem>(filteredItems);
+            DemoItems = new ObservableCollection<DemoItem>(filteredItems);
+        }
     }
-}
 }

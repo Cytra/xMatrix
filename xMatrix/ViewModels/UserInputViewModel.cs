@@ -158,7 +158,7 @@ namespace xMatrix.ViewModels
 
             foreach(var goal in Goals)
             {
-                goal.Relates.Remove(SelectedGoal.Id);
+                goal.RelatesGoals.Remove(SelectedGoal.Id);
             }
             Goals.Remove(SelectedGoal);
 
@@ -177,7 +177,7 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteRemoveRelatedGoal()
         {
-            SelectedGoal.Relates.Remove(SelectedRemoveRelatedGoal.Id);
+            SelectedGoal.RelatesGoals.Remove(SelectedRemoveRelatedGoal.Id);
             _repo.SaveGoals(Goals);
             Goals = _repo.GetAllGoals();
         }
@@ -193,7 +193,7 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteAddRelatedGoal()
         {
-            SelectedGoal.Relates.Add(SelectedRelatedGoal.Id);
+            SelectedGoal.RelatesGoals.Add(SelectedRelatedGoal.Id);
             _repo.SaveGoals(Goals);
             Goals = _repo.GetAllGoals();
             AllRelatedGoals = new List<Goal>();
@@ -250,9 +250,9 @@ namespace xMatrix.ViewModels
                         break;
                 }
 
-                SelectedGoal.Relates.ForEach(x => AllRelatedGoals.RemoveAll(y => y.Id == x));
+                SelectedGoal.RelatesGoals.ForEach(x => AllRelatedGoals.RemoveAll(y => y.Id == x));
                 var relatedGoals = new List<Goal>();
-                SelectedGoal.Relates.ForEach(x => relatedGoals.Add(Goals.FirstOrDefault(y => y.Id == x)));
+                SelectedGoal.RelatesGoals.ForEach(x => relatedGoals.Add(Goals.FirstOrDefault(y => y.Id == x)));
                 RelatedGoals = relatedGoals;
             }
         }
