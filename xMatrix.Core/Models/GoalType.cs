@@ -12,5 +12,7 @@ namespace xMatrix.Core.Models
         public const string InitiativesOne = "Initiatives One";
         public const string InitiativesTwo = "Initiatives Two";
         public const string InitiativesThree = "Initiatives Three";
+        public const string Departments = "Departments";
+        public const string People = "People";
     }
 }

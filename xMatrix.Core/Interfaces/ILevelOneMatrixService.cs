@@ -8,7 +8,7 @@ namespace xMatrix.Core.Interfaces
 {
     public interface ILevelMatrixService
     {
-        List<Polygon> GeneratePolygonList(List<Goal> goals);
-        List<RectItem> GenerateRectList(List<Goal> goals, List<Person> people);
+        List<Polygon> GeneratePolygonList(List<Goal> goals, Department department);
+        List<RectItem> GenerateRectList(List<Goal> goals, List<Department> departments, List<Person> people, Department department);
     }
 }

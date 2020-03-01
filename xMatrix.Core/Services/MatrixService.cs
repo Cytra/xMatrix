@@ -46,7 +46,7 @@ namespace xMatrix.Core.Services
             return Polygons;
         }
 
-        public List<RectItem> GenerateRectList(List<Goal> goals, List<Person> people)
+        public List<RectItem> GenerateRectList(List<Goal> goals,List<Department> departments, List<Person> people, Department department)
         {
             ClearLists();
             GenerateTopLeftRects(goals);
@@ -58,8 +58,8 @@ namespace xMatrix.Core.Services
             GenerateBottomMidRects(goals);
             GenerateBottomRightRects(goals);
             GenerateMidRects(goals, _topGoalType, _bottomGoalType, _leftGoalType, _rightGoalType);
-            GenerateTopPersonRects(goals, people);
-            GenerateMidPersonRects(goals, people);
+            GenerateTopPersonRects(goals, departments, people, department);
+            GenerateMidPersonRects(goals, departments, people, department);
             return RectItems;
         }
 
@@ -229,13 +229,14 @@ namespace xMatrix.Core.Services
 
             double xLoc = (double)oneYearGoals.ToList().Count * _squareWidth;
             double yLoc = (double)shortTermGoals.ToList().Count * _squareWidth;
+
             RectItems.Add(new RectItem() { X = xLoc, Y = yLoc + _rectheight, Height = _rectheight, Width = _rectWidth, Text = topGoal, Stroke = "" });
             RectItems.Add(new RectItem() { X = xLoc, Y = yLoc + _rectWidth - _rectheight * 2, Height = _rectheight, Width = _rectWidth, Text = bottomGoal, Stroke = "" });
             RectItems.Add(new RectItem() { X = xLoc, Y = yLoc + _rectWidth / 2 - _rectheight / 2, Height = _rectheight, Width = _rectWidth / 2, Text = leftGoal, Stroke = "" });
             RectItems.Add(new RectItem() { X = xLoc + _rectWidth / 2, Y = yLoc + _rectWidth / 2 - _rectheight / 2, Height = _rectheight, Width = _rectWidth / 2, Text = rightGoal, Stroke = "" });
         }
 
-        private void GenerateTopPersonRects(List<Goal> goals, List<Person> people)
+        private void GenerateTopPersonRects(List<Goal> goals, List<Department> departments, List<Person> people, Department Selecteddepartment)
         {
             var shortTermGoals = goals.Where(x => x.GoalType == _topGoalType);
             var oneYearGoals = goals.Where(x => x.GoalType == _leftGoalType);
@@ -255,9 +256,21 @@ namespace xMatrix.Core.Services
                 }
                 xLoc += _squareWidth;
             }
+
+            foreach (var department in departments)
+            {
+                double yLoc = 0;
+                foreach (var shortTermGoal in shortTermGoals)
+                {
+                    var relates = shortTermGoal.RelatedDepartments.Contains(department.Id);
+                    RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectheight, Width = _rectheight, Text = relates ? "O" : "" });
+                    yLoc += _squareWidth;
+                }
+                xLoc += _squareWidth;
+            }
         }
 
-        private void GenerateMidPersonRects(List<Goal> goals, List<Person> people)
+        private void GenerateMidPersonRects(List<Goal> goals, List<Department> departments, List<Person> people, Department selectedDepartment)
         {
             var shortTermGoals = goals.Where(x => x.GoalType == _topGoalType);
             var oneYearGoals = goals.Where(x => x.GoalType == _leftGoalType);
@@ -270,6 +283,12 @@ namespace xMatrix.Core.Services
             foreach (var person in people)
             {
                 RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectWidth, Width = _rectheight, Text = person.Name, Rotate = 270 });
+                xLoc += _squareWidth;
+            }
+
+            foreach (var department in departments)
+            {
+                RectItems.Add(new RectItem() { X = xLoc, Y = yLoc, Height = _rectWidth, Width = _rectheight, Text = department.Name, Rotate = 270 });
                 xLoc += _squareWidth;
             }
         }

@@ -67,6 +67,7 @@ namespace xMatrix.ViewModels
         {
             var repo = new GoalRepo();
             var personRepo = new PersonRepo();
+            var depoRepo = new DepartmentRepo();
 
             if (snackbarMessageQueue == null)
                 throw new ArgumentNullException(nameof(snackbarMessageQueue));
@@ -75,6 +76,7 @@ namespace xMatrix.ViewModels
             {
 
                new DemoItem("Matrix", new LevelOneMatrix { DataContext = new LevelOneMatrixViewModel(
+                   depoRepo,
                    repo,
                    personRepo,
                    new LevelMatrixService(

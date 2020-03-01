@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using xMatrix.Core.Interfaces;
 using xMatrix.Core.Models;
@@ -24,6 +25,7 @@ namespace xMatrix.Core.Services
             {
                 var personString = File.ReadAllText(_fileLocation);
                 result = JsonConvert.DeserializeObject<List<Person>>(personString);
+                result = result.Where(x => x.Deleted == false).ToList();
             }
 
             return result;

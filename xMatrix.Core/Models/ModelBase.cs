@@ -4,8 +4,9 @@ using System.Text;
 
 namespace xMatrix.Core.Models
 {
-    public class Person : ModelBase
+    public class ModelBase
     {
-        public bool Deleted { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

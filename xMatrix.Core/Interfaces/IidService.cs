@@ -9,5 +9,6 @@ namespace xMatrix.Core.Interfaces
     {
         int GetFreeId(List<Goal> goals);
         int GetFreeId(List<Person> people);
+        int GetFreeId(List<Department> people);
     }
 }

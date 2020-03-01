@@ -4,7 +4,7 @@ using System.Text;
 
 namespace xMatrix.Core.Models
 {
-    public class Person : ModelBase
+    public class Department : ModelBase
     {
         public bool Deleted { get; set; }
     }

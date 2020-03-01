@@ -9,6 +9,7 @@ namespace xMatrix.Core.Services
 {
     public class IdService : IidService
     {
+
         public IdService()
         {
 
@@ -30,6 +31,16 @@ namespace xMatrix.Core.Services
             if (people.Count > 0)
             {
                 result = people.Max(x => x.Id);
+            }
+            return result + 1;
+        }
+
+        public int GetFreeId(List<Department> departments)
+        {
+            var result = 0;
+            if (departments.Count > 0)
+            {
+                result = departments.Max(x => x.Id);
             }
             return result + 1;
         }
