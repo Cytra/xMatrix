@@ -325,7 +325,7 @@
             Grid.Row="9" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
-            Command="{Binding AddRelatedPerson}">
+            Command="{Binding AddRelatedPerson}" Grid.RowSpan="2" VerticalAlignment="Top">
                 ADD PERSON
             </Button>
             <Button
@@ -344,7 +344,7 @@
             CanUserSortColumns="True"
             CanUserAddRows="False" 
             AutoGenerateColumns="False"
-            SelectedItem="{Binding SelectedRelatedPerson}">
+            SelectedItem="{Binding SelectedRelatedPerson}" SelectionChanged="DataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <materialDesign:DataGridTextColumn
                     Binding="{Binding Name}"
@@ -360,7 +360,7 @@
             Grid.Row="6" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
-            Command="{Binding RemoveRelatedGoal}">
+            Command="{Binding RemoveRelatedPerson}">
                 REMOVE PERSON
             </Button>
 
