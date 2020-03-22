@@ -17,23 +17,23 @@ namespace xMatrix.Core.Services
         {
             _fileLocation = $"{AppDomain.CurrentDomain.BaseDirectory}/{_personListName}.json";
         }
-        public List<Person> GetAllPeople()
-        {
-            var result = new List<Person>();
+        //public List<Person> GetAllPeople()
+        //{
+        //    var result = new List<Person>();
 
-            if (File.Exists(_fileLocation))
-            {
-                var personString = File.ReadAllText(_fileLocation);
-                result = JsonConvert.DeserializeObject<List<Person>>(personString);
-                result = result.Where(x => x.Deleted == false).ToList();
-            }
+        //    if (File.Exists(_fileLocation))
+        //    {
+        //        var personString = File.ReadAllText(_fileLocation);
+        //        result = JsonConvert.DeserializeObject<List<Person>>(personString);
+        //        result = result.Where(x => x.Deleted == false).ToList();
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        public void SavePeople(List<Person> people)
-        {
-            File.WriteAllText(_fileLocation, JsonConvert.SerializeObject(people));
-        }
+        //public void SavePeople(List<Person> people)
+        //{
+        //    File.WriteAllText(_fileLocation, JsonConvert.SerializeObject(people));
+        //}
     }
 }

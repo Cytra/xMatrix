@@ -48,7 +48,7 @@ namespace xMatrix.ViewModels
             }
         }
 
-        public List<Goal> GoalList { get; set; } = new List<Goal>();
+        //public List<Goal> GoalList { get; set; } = new List<Goal>();
 
         private readonly IidService _idService;
         private List<string> _goalTypes = new List<string>() {
@@ -77,6 +77,18 @@ namespace xMatrix.ViewModels
             }
         }
 
+        private List<Goal> _filteredGoals = new List<Goal>();
+
+        public List<Goal> FilteredGoals
+        {
+            get { return _filteredGoals; }
+            set
+            {
+                _filteredGoals = value;
+                OnPropertyChanged(nameof(FilteredGoals));
+            }
+        }
+
         private List<Goal> _allRelatedGoals = new List<Goal>();
 
         public List<Goal> AllRelatedGoals
@@ -102,54 +114,54 @@ namespace xMatrix.ViewModels
             }
         }
 
-        private List<Person> _people = new List<Person>();
+        //private List<Person> _people = new List<Person>();
 
-        public List<Person> People
-        {
-            get { return _people; }
-            set
-            {
-                _people = value;
-                OnPropertyChanged(nameof(People));
-            }
-        }
+        //public List<Person> People
+        //{
+        //    get { return _people; }
+        //    set
+        //    {
+        //        _people = value;
+        //        OnPropertyChanged(nameof(People));
+        //    }
+        //}
 
-        private Person _selectedPerson;
+        //private Person _selectedPerson;
 
-        public Person SelectedPerson
-        {
-            get { return _selectedPerson; }
-            set
-            {
-                _selectedPerson = value;
-                OnPropertyChanged(nameof(SelectedPerson));
-                //UpdateAllRelatedPeople();
-            }
-        }
+        //public Person SelectedPerson
+        //{
+        //    get { return _selectedPerson; }
+        //    set
+        //    {
+        //        _selectedPerson = value;
+        //        OnPropertyChanged(nameof(SelectedPerson));
+        //        //UpdateAllRelatedPeople();
+        //    }
+        //}
 
-        private List<Person> _allRelatedPeople = new List<Person>();
+        //private List<Person> _allRelatedPeople = new List<Person>();
 
-        public List<Person> AllRelatedPeople
-        {
-            get { return _allRelatedPeople; }
-            set
-            {
-                _allRelatedPeople = value;
-                OnPropertyChanged(nameof(AllRelatedPeople));
-            }
-        }
+        //public List<Person> AllRelatedPeople
+        //{
+        //    get { return _allRelatedPeople; }
+        //    set
+        //    {
+        //        _allRelatedPeople = value;
+        //        OnPropertyChanged(nameof(AllRelatedPeople));
+        //    }
+        //}
 
-        private Person _selectedRelatedPerson;
+        //private Person _selectedRelatedPerson;
 
-        public Person SelectedRelatedPerson
-        {
-            get { return _selectedRelatedPerson; }
-            set
-            {
-                _selectedRelatedPerson = value;
-                OnPropertyChanged(nameof(SelectedRelatedPerson));
-            }
-        }
+        //public Person SelectedRelatedPerson
+        //{
+        //    get { return _selectedRelatedPerson; }
+        //    set
+        //    {
+        //        _selectedRelatedPerson = value;
+        //        OnPropertyChanged(nameof(SelectedRelatedPerson));
+        //    }
+        //}
 
         private Goal _selectedGoal = new Goal();
 
@@ -159,9 +171,9 @@ namespace xMatrix.ViewModels
             set
             {
                 _selectedGoal = value;
-                UpdatePeople();
+                //UpdatePeople();
                 UpdateAllRelatedGoals();
-                UpdateAllRelatedPeople();
+                //UpdateAllRelatedPeople();
                 UpdateDepartments();
                 UpdateAllRelatedDepartment();
             }
@@ -188,10 +200,14 @@ namespace xMatrix.ViewModels
         public Goal SelectedRemoveRelatedGoal
         {
             get { return _selectedRemoveRelatedGoal; }
-            set { _selectedRemoveRelatedGoal = value; }
+            set
+            {
+                _selectedRemoveRelatedGoal = value;
+                OnPropertyChanged(nameof(SelectedRemoveRelatedGoal));
+            }
         }
 
-        public List<Person> AllPeople { get; set; } = new List<Person>();
+        //public List<Person> AllPeople { get; set; } = new List<Person>();
 
         private List<Department> _allDepartments = new List<Department>();
 
@@ -375,9 +391,9 @@ namespace xMatrix.ViewModels
             AddRelatedGoal = new DelegateCommand(ExcecuteAddRelatedGoal, CanExcecuteAddRelatedGoal);
             RemoveRelatedGoal = new DelegateCommand(ExcecuteRemoveRelatedGoal, CanExcecuteRemoveRelatedGoal);
             DeleteGoal = new DelegateCommand(ExcecuteDeleteGoal, CanExcecuteDeleteGoal);
-            DeletePerson = new DelegateCommand(ExcecuteDeletePerson, CanExcecuteDeletePerson);
-            AddNewPerson = new DelegateCommand(ExcecuteAddNewPerson, CanExcecuteAddNewPerson);
-            AddRelatedPerson = new DelegateCommand(ExcecuteAddRelatedPerson, CanExcecuteAddRelatedPerson);
+            //DeletePerson = new DelegateCommand(ExcecuteDeletePerson, CanExcecuteDeletePerson);
+            //AddNewPerson = new DelegateCommand(ExcecuteAddNewPerson, CanExcecuteAddNewPerson);
+            //AddRelatedPerson = new DelegateCommand(ExcecuteAddRelatedPerson, CanExcecuteAddRelatedPerson);
             GetLevelOneMatrix = new DelegateCommand(ExcecuteGetLevelOneMatrix);
             GetLevelTwoMatrix = new DelegateCommand(ExcecuteGetLevelTwoMatrix, CanExcecuteGetLevelTwoMatrix);
             GetLevelThreeMatrix = new DelegateCommand(ExcecuteGetLevelThreeMatrix, CanExcecuteGetLevelThreeMatrix);
@@ -385,36 +401,53 @@ namespace xMatrix.ViewModels
             RemoveRelatedDepartment = new DelegateCommand(ExcecuteRemoveRelatedDepartment, CanExcecuteRemoveRelatedDepartment);
             AddRelatedDepartment = new DelegateCommand(ExcecuteAddRelatedDepartment, CanExcecuteAddRelatedDepartment);
             DeleteDepartments = new DelegateCommand(ExcecuteDeleteDepartments, CanExcecuteDeleteDepartments);
-            RemoveRelatedPerson = new DelegateCommand(ExcecuteRemoveRelatedPerson, CanExcecuteRemoveRelatedPerson);
+            //RemoveRelatedPerson = new DelegateCommand(ExcecuteRemoveRelatedPerson, CanExcecuteRemoveRelatedPerson);
             UpdateDepartments();
             Goals = _repo.GetAllGoals();
-            GoalList = _repo.GetAllGoals();
-            UpdatePeople();
+            UpdateGoals();
+
+            //UpdatePeople();
             UpdateCanvas();
+        }
+
+        private void UpdateGoals()
+        {
+            switch (SelectedmatrixLevel)
+            {
+                case "One":
+                    FilteredGoals = _repo.GetAllGoals();
+                    break;
+                case "Two":
+                    FilteredGoals = _repo.GetAllGoals().Where(x => x.GoalType != GoalType.LongTerm).ToList();
+                    break;
+                case "Three":
+                    FilteredGoals = _repo.GetAllGoals().Where(x => x.GoalType != GoalType.LongTerm).ToList();
+                    break;
+            }
         }
 
         private bool CanExcecuteRemoveRelatedPerson()
         {
-            if(SelectedGoal == null)
+            if (SelectedGoal == null)
             {
                 return false;
             }
-            if(SelectedRelatedPerson == null)
-            {
-                return false;
-            }
+            //if(SelectedRelatedPerson == null)
+            //{
+            //    return false;
+            //}
             return true;
         }
 
-        private void ExcecuteRemoveRelatedPerson()
-        {
-            Goals.Single(x => x.Id == SelectedGoal.Id).RelatesPerson.RemoveAll(x => x == SelectedRelatedPerson.Id);
-            SelectedRelatedPerson = new Person();
-            _repo.SaveGoals(Goals);
+        //private void ExcecuteRemoveRelatedPerson()
+        //{
+        //    //Goals.Single(x => x.Id == SelectedGoal.Id).RelatesPerson.RemoveAll(x => x == SelectedRelatedPerson.Id);
+        //    //SelectedRelatedPerson = new Person();
+        //    _repo.SaveGoals(Goals);
 
-            UpdateAllRelatedPeople();
-            UpdateCanvas();
-        }
+        //    //UpdateAllRelatedPeople();
+        //    UpdateCanvas();
+        //}
 
         private bool CanExcecuteDeleteDepartments()
         {
@@ -453,8 +486,16 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteAddRelatedDepartment()
         {
+            //Goals.Single(x => x.Id == SelectedGoal.Id).RelatesGoals.Add(SelectedRelatedGoal.Id);
+            //_repo.SaveGoals(Goals);
+            ////SelectedRelatedGoal = new Goal();
+            //UpdateGoals();
+            //UpdateAllRelatedGoals();
+            //UpdateCanvas();
+
             Goals.Single(x => x.Id == SelectedGoal.Id).RelatedDepartments.Add(SelectedDepartment.Id);
             _repo.SaveGoals(Goals);
+            UpdateGoals();
             UpdateDepartments();
             UpdateAllRelatedDepartment();
             UpdateCanvas();
@@ -473,19 +514,19 @@ namespace xMatrix.ViewModels
 
             if (SelectedGoal != null)
             {
-                if (SelectedGoal.GoalType == GoalType.ShortTerm)
-                {
+                //if (SelectedGoal.GoalType == GoalType.ShortTerm)
+                //{
                     Departments = _depoRepo.GetAllDepartments();
                     var tempDeps = new List<Department>();
                     SelectedGoal.RelatedDepartments.ForEach(x => tempDeps.Add(AllDepartments.First(y => y.Id == x)));
                     RelatedDepartment = tempDeps;
-                    SelectedGoal.RelatedDepartments.ForEach(x => Departments.RemoveAll(y=> y.Id == x));
+                    SelectedGoal.RelatedDepartments.ForEach(x => Departments.RemoveAll(y => y.Id == x));
                     //foreach (var departmentId in SelectedGoal.RelatedDepartments)
                     //{
                     //    RelatedDepartment.Add(AllDepartments.Single(x => x.Id == departmentId));
                     //    Departments.RemoveAll(x => x.Id == departmentId);
                     //}
-                }
+                //}
             }
             UpdateCanvas();
         }
@@ -505,9 +546,10 @@ namespace xMatrix.ViewModels
 
         private void ExcecuteRemoveRelatedDepartment()
         {
+
             Goals.Single(x => x.Id == SelectedGoal.Id).RelatedDepartments.Remove(SelectedRelatedDepartment.Id);
             _repo.SaveGoals(Goals);
-            Goals = _repo.GetAllGoals();
+            UpdateGoals();
             UpdateDepartments();
             UpdateAllRelatedDepartment();
             UpdateCanvas();
@@ -535,19 +577,19 @@ namespace xMatrix.ViewModels
             UpdateCanvas();
         }
 
-        private void UpdatePeople()
-        {
-            AllPeople = _personRepo.GetAllPeople();
-            People = AllPeople;
-            UpdateCanvas();
-        }
+        //private void UpdatePeople()
+        //{
+        //    AllPeople = _personRepo.GetAllPeople();
+        //    People = AllPeople;
+        //    UpdateCanvas();
+        //}
 
         private bool CanExcecuteAddRelatedPerson()
         {
-            if (SelectedPerson == null)
-            {
-                return false;
-            }
+            //if (SelectedPerson == null)
+            //{
+            //    return false;
+            //}
             if (SelectedGoal == null)
             {
                 return false;
@@ -555,16 +597,16 @@ namespace xMatrix.ViewModels
             return true;
         }
 
-        private void ExcecuteAddRelatedPerson()
-        {
+        //private void ExcecuteAddRelatedPerson()
+        //{
 
-            Goals.Single(x => x.Id == SelectedGoal.Id).RelatesPerson.Add(SelectedPerson.Id);
-            _repo.SaveGoals(Goals);
-            Goals = _repo.GetAllGoals();
-            UpdatePeople();
-            UpdateAllRelatedPeople();
-            UpdateCanvas();
-        }
+        //    //Goals.Single(x => x.Id == SelectedGoal.Id).RelatesPerson.Add(SelectedPerson.Id);
+        //    _repo.SaveGoals(Goals);
+        //    Goals = _repo.GetAllGoals();
+        //    //UpdatePeople();
+        //    //UpdateAllRelatedPeople();
+        //    UpdateCanvas();
+        //}
 
         private bool CanExcecuteAddNewPerson()
         {
@@ -575,42 +617,42 @@ namespace xMatrix.ViewModels
             return true;
         }
 
-        private void ExcecuteAddNewPerson()
-        {
-            var newPerson = new Person();
-            newPerson.Id = _idService.GetFreeId(People);
-            newPerson.Name = NewPersonName;
-            newPerson.Deleted = false;
-            NewPersonName = "";
-            People.Add(newPerson);
-            _personRepo.SavePeople(People);
-            AllPeople = _personRepo.GetAllPeople();
-            People = AllPeople;
-            UpdateCanvas();
-        }
+        //private void ExcecuteAddNewPerson()
+        //{
+        //    var newPerson = new Person();
+        //    newPerson.Id = _idService.GetFreeId(People);
+        //    newPerson.Name = NewPersonName;
+        //    newPerson.Deleted = false;
+        //    NewPersonName = "";
+        //    People.Add(newPerson);
+        //    _personRepo.SavePeople(People);
+        //    AllPeople = _personRepo.GetAllPeople();
+        //    People = AllPeople;
+        //    UpdateCanvas();
+        //}
 
-        private bool CanExcecuteDeletePerson()
-        {
-            if (SelectedPerson != null)
-            {
-                return true;
-            }
-            return false;
-        }
+        //private bool CanExcecuteDeletePerson()
+        //{
+        //    if (SelectedPerson != null)
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
-        private void ExcecuteDeletePerson()
-        {
-            foreach (var goal in Goals)
-            {
-                goal.RelatesPerson.RemoveAll(x => x == SelectedPerson.Id);
-            }
+        //private void ExcecuteDeletePerson()
+        //{
+        //    foreach (var goal in Goals)
+        //    {
+        //        goal.RelatesPerson.RemoveAll(x => x == SelectedPerson.Id);
+        //    }
 
-            People.Single(x => x.Id == SelectedPerson.Id).Deleted = true;
-            _repo.SaveGoals(Goals);
-            _personRepo.SavePeople(People);
-            AllPeople = People;
-            UpdateCanvas();
-        }
+        //    People.Single(x => x.Id == SelectedPerson.Id).Deleted = true;
+        //    _repo.SaveGoals(Goals);
+        //    _personRepo.SavePeople(People);
+        //    AllPeople = People;
+        //    UpdateCanvas();
+        //}
 
         private void UpdateCanvas()
         {
@@ -618,16 +660,16 @@ namespace xMatrix.ViewModels
             switch (SelectedmatrixLevel)
             {
                 case "One":
-                    RectItems = _levelOneMatrixService.GenerateRectList(GoalList, AllDepartments, AllPeople, null);
-                    Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList, null);
+                    RectItems = _levelOneMatrixService.GenerateRectList(Goals, AllDepartments, null);
+                    Polygons = _levelOneMatrixService.GeneratePolygonList(Goals, null);
                     break;
                 case "Two":
-                    RectItems = _leveltwoMatrixService.GenerateRectList(GoalList, new List<Department>(), AllPeople, SelectedLevelTwoDepartment);
-                    Polygons = _leveltwoMatrixService.GeneratePolygonList(GoalList, SelectedLevelTwoDepartment);
+                    RectItems = _leveltwoMatrixService.GenerateRectList(Goals, new List<Department>(), SelectedLevelTwoDepartment);
+                    Polygons = _leveltwoMatrixService.GeneratePolygonList(Goals, SelectedLevelTwoDepartment);
                     break;
                 case "Three":
-                    RectItems = _levelTreeMatrixService.GenerateRectList(GoalList, new List<Department>(), AllPeople, SelectedLevelThreeDepartment);
-                    Polygons = _levelTreeMatrixService.GeneratePolygonList(GoalList, SelectedLevelThreeDepartment);
+                    RectItems = _levelTreeMatrixService.GenerateRectList(Goals, new List<Department>(), SelectedLevelThreeDepartment);
+                    Polygons = _levelTreeMatrixService.GeneratePolygonList(Goals, SelectedLevelThreeDepartment);
                     break;
             }
         }
@@ -635,12 +677,13 @@ namespace xMatrix.ViewModels
         private void ExcecuteGetLevelThreeMatrix()
         {
             SelectedmatrixLevel = "Three";
+            UpdateGoals();
             UpdateCanvas();
         }
 
         private bool CanExcecuteGetLevelTwoMatrix()
         {
-            if(SelectedLevelTwoDepartment == null)
+            if (SelectedLevelTwoDepartment == null)
             {
                 return false;
             }
@@ -650,6 +693,7 @@ namespace xMatrix.ViewModels
         private void ExcecuteGetLevelTwoMatrix()
         {
             SelectedmatrixLevel = "Two";
+            UpdateGoals();
             UpdateCanvas();
         }
 
@@ -667,17 +711,17 @@ namespace xMatrix.ViewModels
         private void ExcecuteGetLevelOneMatrix()
         {
             SelectedmatrixLevel = "One";
+            UpdateGoals();
             UpdateCanvas();
         }
 
         public void OnNewRepoData(object sender, RepoEventArgs eventArgs)
         {
-            GoalList = eventArgs.Goals;
             Goals = eventArgs.Goals;
             RectItems = new List<RectItem>();
             Polygons = new List<Polygon>();
-            RectItems = _levelOneMatrixService.GenerateRectList(GoalList,AllDepartments, AllPeople, null);
-            Polygons = _levelOneMatrixService.GeneratePolygonList(GoalList, null);
+            RectItems = _levelOneMatrixService.GenerateRectList(Goals, AllDepartments, null);
+            Polygons = _levelOneMatrixService.GeneratePolygonList(Goals, null);
         }
 
         private bool CanExcecuteDeleteGoal()
@@ -699,8 +743,7 @@ namespace xMatrix.ViewModels
             Goals.Single(x => x.Id == SelectedGoal.Id).Deleted = true;
 
             _repo.SaveGoals(Goals);
-            Goals = _repo.GetAllGoals();
-            GoalList = Goals;
+            UpdateGoals();
             UpdateCanvas();
         }
 
@@ -710,14 +753,21 @@ namespace xMatrix.ViewModels
             {
                 return false;
             }
+            if (SelectedGoal == null)
+            {
+                return false;
+            }
             return true;
         }
 
         private void ExcecuteRemoveRelatedGoal()
         {
+            //SelectedGoal.RelatesGoals.RemoveAll(x=> x == SelectedRemoveRelatedGoal.Id);
             Goals.Single(x => x.Id == SelectedGoal.Id).RelatesGoals.RemoveAll(x => x == SelectedRemoveRelatedGoal.Id);
-            SelectedRemoveRelatedGoal = new Goal();
+            //SelectedRemoveRelatedGoal = new Goal();
             _repo.SaveGoals(Goals);
+            RelatedGoals = new List<Goal>();
+            UpdateGoals();
             UpdateAllRelatedGoals();
             UpdateCanvas();
         }
@@ -728,14 +778,19 @@ namespace xMatrix.ViewModels
             {
                 return false;
             }
+            if (SelectedGoal == null)
+            {
+                return false;
+            }
             return true;
         }
 
         private void ExcecuteAddRelatedGoal()
         {
-            SelectedGoal.RelatesGoals.Add(SelectedRelatedGoal.Id);
+            Goals.Single(x => x.Id == SelectedGoal.Id).RelatesGoals.Add(SelectedRelatedGoal.Id);
             _repo.SaveGoals(Goals);
-            SelectedRelatedGoal = new Goal();
+            //SelectedRelatedGoal = new Goal();
+            UpdateGoals();
             UpdateAllRelatedGoals();
             UpdateCanvas();
         }
@@ -763,7 +818,7 @@ namespace xMatrix.ViewModels
             newGoal.Deleted = false;
             Goals.Add(newGoal);
             _repo.SaveGoals(Goals);
-            Goals = _repo.GetAllGoals();
+            UpdateGoals();
             NewGoalName = "";
             UpdateCanvas();
         }
@@ -802,22 +857,6 @@ namespace xMatrix.ViewModels
                 var relatedGoals = new List<Goal>();
                 SelectedGoal.RelatesGoals.ForEach(x => relatedGoals.Add(Goals.FirstOrDefault(y => y.Id == x)));
                 RelatedGoals = relatedGoals;
-            }
-        }
-
-        private void UpdateAllRelatedPeople()
-        {
-            if (SelectedGoal != null)
-            {
-                var allpeople = _personRepo.GetAllPeople();
-                var people = _personRepo.GetAllPeople();
-                var allRelatedPeople = new List<Person>();
-
-                SelectedGoal.RelatesPerson.ForEach(x => people.RemoveAll(y => y.Id == x));
-                SelectedGoal.RelatesPerson.ForEach(x => allRelatedPeople.Add(allpeople.First(y => y.Id == x)));
-
-                People = people;
-                AllRelatedPeople = allRelatedPeople;
             }
         }
 

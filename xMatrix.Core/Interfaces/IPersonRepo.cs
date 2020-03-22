@@ -7,7 +7,7 @@ namespace xMatrix.Core.Interfaces
 {
     public interface IPersonRepo
     {
-        List<Person> GetAllPeople();
-        void SavePeople(List<Person> people);
+        //List<Person> GetAllPeople();
+        //void SavePeople(List<Person> people);
     }
 }

@@ -128,8 +128,6 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="15*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
@@ -148,28 +146,28 @@
             </Grid.RowDefinitions>
 
             <TextBox 
-            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
             materialDesign:HintAssist.Hint="Goal name" 
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             VerticalAlignment="Center"
             Text="{Binding NewGoalName ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <ComboBox
-            Grid.Row="0" Grid.Column="5"
+            Grid.Row="0" Grid.Column="3"
             materialDesign:HintAssist.Hint="Goal Type"
             SelectedItem="{Binding NewGoalType}"
             ItemsSource="{Binding GoalTypes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             </ComboBox>
 
             <Button
-            Grid.Row="0" Grid.Column="7"
+            Grid.Row="0" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddNewGoal}">
                 ADD Goal
             </Button>
 
-            <TextBox 
+            <!--<TextBox 
             Grid.Row="1" Grid.Column="1"
             Grid.ColumnSpan="5"
             materialDesign:HintAssist.Hint="Person Name" 
@@ -183,18 +181,18 @@
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddNewPerson}">
                 ADD PERSON
-            </Button>
+            </Button>-->
 
             <TextBox 
             Grid.Row="2" Grid.Column="1"
-            Grid.ColumnSpan="5"
+            Grid.ColumnSpan="3"
             materialDesign:HintAssist.Hint="Department Name" 
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             VerticalAlignment="Center"
             Text="{Binding NewDepartmentName ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Button
-            Grid.Row="2" Grid.Column="7"
+            Grid.Row="2" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddNewDepartment}">
@@ -214,7 +212,7 @@
             Grid.Row="5"
             Grid.Column="1"
             Grid.RowSpan="4"
-            ItemsSource="{Binding Goals ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding FilteredGoals ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CanUserSortColumns="True"
             CanUserAddRows="False" 
             AutoGenerateColumns="False"
@@ -303,7 +301,7 @@
                 REMOVE RELATION
             </Button>
 
-            <DataGrid
+            <!--<DataGrid
             Grid.Row="7"
             Grid.Column="5"
             Grid.RowSpan="2"
@@ -319,24 +317,24 @@
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
 
-            <Button
+            <!--<Button
             Grid.Row="9" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddRelatedPerson}" Grid.RowSpan="2" VerticalAlignment="Top">
                 ADD PERSON
-            </Button>
-            <Button
+            </Button>-->
+            <!--<Button
             Grid.Row="10" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding DeletePerson}">
                 DELETE PERSON
-            </Button>
+            </Button>-->
 
-            <DataGrid
+            <!--<DataGrid
             Grid.Row="5"
             Grid.Column="5"
             Grid.RowSpan="1"
@@ -352,21 +350,21 @@
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid>-->
 
 
 
-            <Button
+            <!--<Button
             Grid.Row="6" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding RemoveRelatedPerson}">
                 REMOVE PERSON
-            </Button>
+            </Button>-->
 
             <DataGrid
             Grid.Row="5"
-            Grid.Column="7"
+            Grid.Column="5"
             Grid.RowSpan="1"
             ItemsSource="{Binding RelatedDepartment ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CanUserSortColumns="True"
@@ -383,7 +381,7 @@
             </DataGrid>
 
             <Button
-            Grid.Row="6" Grid.Column="7"
+            Grid.Row="6" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding RemoveRelatedDepartment}">
@@ -392,7 +390,7 @@
 
             <DataGrid
             Grid.Row="7"
-            Grid.Column="7"
+            Grid.Column="5"
             Grid.RowSpan="2"
             ItemsSource="{Binding Departments ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             CanUserSortColumns="True"
@@ -409,7 +407,7 @@
             </DataGrid>
 
             <Button
-            Grid.Row="9" Grid.Column="7"
+            Grid.Row="9" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding AddRelatedDepartment}">
@@ -417,7 +415,7 @@
             </Button>
 
             <Button
-            Grid.Row="10" Grid.Column="7"
+            Grid.Row="10" Grid.Column="5"
             Style="{StaticResource MaterialDesignRaisedButton}"
             ToolTip="Resource name: MaterialDesignRaisedButton"
             Command="{Binding DeleteDepartments}">

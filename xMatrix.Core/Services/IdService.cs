@@ -25,15 +25,15 @@ namespace xMatrix.Core.Services
             return result + 1;
         }
 
-        public int GetFreeId(List<Person> people)
-        {
-            var result = 0;
-            if (people.Count > 0)
-            {
-                result = people.Max(x => x.Id);
-            }
-            return result + 1;
-        }
+        //public int GetFreeId(List<Person> people)
+        //{
+        //    var result = 0;
+        //    if (people.Count > 0)
+        //    {
+        //        result = people.Max(x => x.Id);
+        //    }
+        //    return result + 1;
+        //}
 
         public int GetFreeId(List<Department> departments)
         {

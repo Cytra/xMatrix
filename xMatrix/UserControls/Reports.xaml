@@ -38,7 +38,7 @@
             >
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn
-                    Binding="{Binding Person.Name}"
+                    Binding="{Binding Department.Name}"
                     Header="Name"
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
@@ -73,7 +73,7 @@
             >
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn
-                    Binding="{Binding Person.Name}"
+                    Binding="{Binding Department.Name}"
                     Header="Name"
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
@@ -108,7 +108,7 @@
             >
             <DataGrid.Columns>
                 <materialDesign:DataGridTextColumn
-                    Binding="{Binding Person.Name}"
+                    Binding="{Binding Department.Name}"
                     Header="Name"
                     IsReadOnly="True"
                     EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />

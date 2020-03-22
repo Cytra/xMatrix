@@ -13,9 +13,9 @@ namespace xMatrix.ViewModels
     public class ReportsViewModel : INotifyPropertyChanged
     {
         private readonly IGoalRepo _repo;
-        private readonly IPersonRepo _personRepo;
+        private readonly IDepartmentRepo _deporepo;
         private List<Goal> _goals = new List<Goal>();
-        private List<Person> _people = new List<Person>();
+        private List<Department> _departments = new List<Department>();
 
         private List<ReportItem> _levelOneReport = new List<ReportItem>();
 
@@ -58,12 +58,12 @@ namespace xMatrix.ViewModels
 
         public ReportsViewModel(
             IGoalRepo repo,
-            IPersonRepo personRepo)
+            IDepartmentRepo deporepo)
         {
             _repo = repo;
-            _personRepo = personRepo;
+            _deporepo = deporepo;
             _goals = _repo.GetAllGoals();
-            _people = _personRepo.GetAllPeople();
+            _departments = _deporepo.GetAllDepartments();
             _repo.NewData += OnNewRepoData;
             LevelOneReport = GenerateLevelOneReport();
             LevelTwoReport = GenerateLevelTwoReport();
@@ -73,15 +73,15 @@ namespace xMatrix.ViewModels
         private List<ReportItem> GenerateLevelThreeReport()
         {
             var result = new List<ReportItem>();
-            var people = _people;
-            foreach (var person in people)
+            var departments = _departments;
+            foreach (var department in departments)
             {
                 foreach (var initiativeOne in _goals.Where(x => x.GoalType == GoalType.InitiativesThree))
                 {
-                    if (initiativeOne.RelatesPerson.Contains(person.Id))
+                    if (initiativeOne.RelatedDepartments.Contains(department.Id))
                     {
                         var reportItem = new ReportItem();
-                        reportItem.Person = person;
+                        reportItem.Department = department;
                         reportItem.Goal = initiativeOne;
                         result.Add(reportItem);
                     }
@@ -93,15 +93,15 @@ namespace xMatrix.ViewModels
         private List<ReportItem> GenerateLevelTwoReport()
         {
             var result = new List<ReportItem>();
-            var people = _people;
-            foreach (var person in people)
+            var departments = _departments;
+            foreach (var department in departments)
             {
                 foreach (var initiativeOne in _goals.Where(x => x.GoalType == GoalType.InitiativesTwo))
                 {
-                    if (initiativeOne.RelatesPerson.Contains(person.Id))
+                    if (initiativeOne.RelatedDepartments.Contains(department.Id))
                     {
                         var reportItem = new ReportItem();
-                        reportItem.Person = person;
+                        reportItem.Department = department;
                         reportItem.Goal = initiativeOne;
                         result.Add(reportItem);
                     }
@@ -113,15 +113,15 @@ namespace xMatrix.ViewModels
         private List<ReportItem> GenerateLevelOneReport()
         {
             var result = new List<ReportItem>();
-            var people = _people;
-            foreach (var person in people)
+            var departments = _departments;
+            foreach (var department in departments)
             {
                 foreach (var initiativeOne in _goals.Where(x => x.GoalType == GoalType.InitiativesOne))
                 {
-                    if (initiativeOne.RelatesPerson.Contains(person.Id))
+                    if (initiativeOne.RelatedDepartments.Contains(department.Id))
                     {
                         var reportItem = new ReportItem();
-                        reportItem.Person = person;
+                        reportItem.Department = department;
                         reportItem.Goal = initiativeOne;
                         result.Add(reportItem);
                     }
@@ -133,7 +133,6 @@ namespace xMatrix.ViewModels
         private void OnNewRepoData(object sender, RepoEventArgs eventArgs)
         {
             _goals = eventArgs.Goals;
-            _people = _personRepo.GetAllPeople();
             LevelOneReport = GenerateLevelOneReport();
             LevelTwoReport = GenerateLevelTwoReport();
             LevelThreeReport = GenerateLevelThreeReport();

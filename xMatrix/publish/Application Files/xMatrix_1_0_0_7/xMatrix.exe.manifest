@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="xMatrix.exe" version="1.0.0.7" publicKeyToken="1dffd5ee1fefdae2" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="xMatrix" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="xMatrix.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Caliburn.Micro.dll" size="61952">
+      <assemblyIdentity name="Caliburn.Micro" version="3.2.0.0" publicKeyToken="8E5891231F2ED21F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>zf02jjYW2POA3NZ1DyLe/iSq28Srmfbg2q6pKQr5YoY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Caliburn.Micro.Platform.dll" size="83968">
+      <assemblyIdentity name="Caliburn.Micro.Platform" version="3.2.0.0" publicKeyToken="8E5891231F2ED21F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CsCKwKY/hCRWjyvW8TqsJC+tbVCMany10gjyyFoM4Ro=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Caliburn.Micro.Platform.Core.dll" size="14848">
+      <assemblyIdentity name="Caliburn.Micro.Platform.Core" version="3.2.0.0" publicKeyToken="8E5891231F2ED21F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>NhQXReKbc4F884+KKY3O496DOLCg7PgihLufdIMSlu0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.AvalonEdit.dll" size="626688">
+      <assemblyIdentity name="ICSharpCode.AvalonEdit" version="5.0.3.0" publicKeyToken="9CC39BE672370310" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>BY848z8/mfkEq5WIRHojQ0bIWXGEBLTopSNnPtGc2+c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaterialDesignColors.dll" size="299520">
+      <assemblyIdentity name="MaterialDesignColors" version="1.2.2.920" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6gvFPi+BLrc6jgNfz3BZ7hVhgiulmFq3HPMy6r0JQh0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaterialDesignThemes.Wpf.dll" size="6969344">
+      <assemblyIdentity name="MaterialDesignThemes.Wpf" version="3.0.1.920" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Ztu6R43ktpKsNxV3WjUi1/CSu6yhZRPbEo3jpUTczIM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="700336">
+      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ShowMeTheXAML.dll" size="16384">
+      <assemblyIdentity name="ShowMeTheXAML" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LIFSlD10nzujc40MPhanyQeDKBfF4l9/pyUwTLDoByQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ShowMeTheXAML.AvalonEdit.dll" size="9728">
+      <assemblyIdentity name="ShowMeTheXAML.AvalonEdit" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ZOwrPhZddMbvH8CuK6S3Am13EXPA2PfRKQ36lbC5Ul0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Windows.Interactivity.dll" size="55904">
+      <assemblyIdentity name="System.Windows.Interactivity" version="4.5.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>k/vFnkiAr8nxNsOsCXatp/P6p8rO3OXIJLM3y8qdLr8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="xMatrix.exe" size="77280">
+      <assemblyIdentity name="xMatrix" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>6kdicECsHqbwz9cli2hAUP9n5drKi+p4stBCv2u8cAg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="xMatrix.Core.dll" size="25600">
+      <assemblyIdentity name="xMatrix.Core" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>JqbHPJ10m73pWdiB28yK0AovEkFscffDeQqjaJVhYbM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="xMatrix.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-SVL56C3\Cytra" issuerKeyHash="2fb44614bf90b7b2a4f5d8cbe36959ac8919f969" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>bhWr5MOxh79uBJDEMWKNKf9GJg5jG2rv749xTwOvovw=</DigestValue></Reference></SignedInfo><SignatureValue>YaS2hf59+qz9sLFXSNv37V5nMGWBv7d9CgrW8r7wfDUyfOP6tJpkIBjwmJKoKH7pgHrJgE7/o5m9JqmOWdbhmK/wMwK4sv1UxTIJ8eKw+hKQ3IjYJWYxPB2BvWgbqhGWfrR9ojZ3p1P4MMP2NGGWy7tC8XxAcfEgGrca7QJo3C8=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>133YQxceIdkoihPYIptgnxNviTS9H8mVH9W07dCp7KACsZBMlvR9GxoM+FURL6vRdmCNeOfaLr5E7JfhUKYzvC8BVUV2HgUHjWVx+Ep67biSXxtoMZAAV5J2DXN4JTeKGrP8pWfpOgG/lXAy1igpPLVUrWWAic+CFZ+S1rtYeD0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="fca2af034f718fefef6a1b630e2646ff298d6231c490046ebf87b1c3e4ab156e" Description="" Url=""><as:assemblyIdentity name="xMatrix.exe" version="1.0.0.7" publicKeyToken="1dffd5ee1fefdae2" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-SVL56C3\Cytra</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>TNoMk1xWQjNjaqI6oH4wzQ6XQy1veotXGRrI1z2QOyE=</DigestValue></Reference></SignedInfo><SignatureValue>uGLI1pfT8DZxynfnE49Q/9ZCKbwk1aVZVIbxC7kknaugMGCmDs7ebU4J1UqVet+FHIqUdYtyDzRq6LZzqAGFOln89giAa8wbpDoir85M+WnQ1vn7AkB7lOLXBitUMMcJMFoWJB3bBRA1p8Ik4t/Gol5IGqo/ruQGBUGXryAGYiM=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>133YQxceIdkoihPYIptgnxNviTS9H8mVH9W07dCp7KACsZBMlvR9GxoM+FURL6vRdmCNeOfaLr5E7JfhUKYzvC8BVUV2HgUHjWVx+Ep67biSXxtoMZAAV5J2DXN4JTeKGrP8pWfpOgG/lXAy1igpPLVUrWWAic+CFZ+S1rtYeD0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQYaIAwHX3WbpP2Z9ob6XWcjANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFMAVgBMADUANgBDADMAXABDAHkAdAByAGEwHhcNMjAwMjA0MjE0MzU2WhcNMjEwMjA0MDM0MzU2WjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtAFMAVgBMADUANgBDADMAXABDAHkAdAByAGEwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANd92EMXHiHZKIoT2CKbYJ8Tb4k0vR/JlR/VtO3QqeygArGQTJb0fRsaDPhVES+r0XZgjXjn2i6+ROyX4VCmM7wvAVVFdh4FB41lcfhKeu24kl8baDGQAFeSdg1zeCU3ihqz/KVn6ToBv5VwMtYoKTy1VK1lgInPghWfkta7WHg9AgMBAAEwDQYJKoZIhvcNAQELBQADgYEA037U7c6s+cGPn5EPnfNuVg2nQzT7FYCcOkxbJLFLiPn8gDudnvyEyyygDMcEEVpq7ShQWue2Fqi30rbg85YA9KOmc6T6Nbhog+e1M46MzjrIeHqM40E0eLseUk/APyrbPvh8uNi4HU8njhCSk1ECEh/wvBvQf+2s36BH5IP4aws=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

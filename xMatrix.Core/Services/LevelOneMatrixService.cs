@@ -36,10 +36,10 @@ namespace xMatrix.Core.Services
             return _matrixService.GeneratePolygonList(goals);
         }
 
-        public List<RectItem> GenerateRectList(List<Goal> goals, List<Department> departments, List<Person> people, Department department)
+        public List<RectItem> GenerateRectList(List<Goal> goals, List<Department> departments, Department department)
         {
             goals = FilterGoals(goals, department);
-            return _matrixService.GenerateRectList(goals, departments, people, department);
+            return _matrixService.GenerateRectList(goals, departments, department);
         }
 
         private List<Goal> FilterGoals(List<Goal> goals, Department selectedDepartment)

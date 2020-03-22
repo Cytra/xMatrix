@@ -100,7 +100,7 @@ namespace xMatrix.ViewModels
                 VerticalScrollBarVisibilityRequirement = ScrollBarVisibility.Auto
                     },
 
-               new DemoItem("Reports", new Reports { DataContext = new ReportsViewModel(repo, personRepo) } ,
+               new DemoItem("Reports", new Reports { DataContext = new ReportsViewModel(repo, depoRepo) } ,
                     new []
                     {
                         DocumentationLink.WikiLink("Button-Styles", "Buttons"),

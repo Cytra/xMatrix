@@ -6,7 +6,7 @@ namespace xMatrix.Core.Models
 {
     public class ReportItem
     {
-        public Person Person { get; set; }
+        public Department Department { get; set; }
         public Goal Goal { get; set; }
     }
 }
